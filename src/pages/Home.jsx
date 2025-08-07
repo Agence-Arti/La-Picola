@@ -31,7 +31,7 @@ const Home = () => {
           >
             <h1 className="font-playfair text-6xl md:text-8xl font-bold text-foreground text-shadow">
               Bienvenue à
-              <span className="block brand-text mt-2">Pical</span>
+              <span className="block brand-text mt-2">La Piccola</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mt-4">
               L'authenticité de l'Italie au cœur de Montréal.
