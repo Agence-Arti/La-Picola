@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import Navbar from '@/components/Navbar';
@@ -9,8 +10,25 @@ import Reservations from '@/pages/Reservations';
 import OnlineOrder from '@/pages/OnlineOrder';
 import Gallery from '@/pages/Gallery';
 import Contact from '@/pages/Contact';
+import PasswordProtect from '@/components/PasswordProtect';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const isVerified = localStorage.getItem('site_authenticated') === 'true';
+    setIsAuthenticated(isVerified);
+  }, []);
+
+  const handleCorrectPassword = () => {
+    localStorage.setItem('site_authenticated', 'true');
+    setIsAuthenticated(true);
+  };
+
+  if (!isAuthenticated) {
+    return <PasswordProtect onCorrectPassword={handleCorrectPassword} />;
+  }
+
   return (
     <Router>
       <div className="min-h-screen bg-background">
